@@ -1,7 +1,10 @@
 package com.example.a21753725a.magiccardlist;
 
+import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +22,11 @@ public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
     }
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,6 +72,18 @@ public class MainActivityFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
     private void refresh() {
+        RefreshDataTask task = new RefreshDataTask();
+        task.execute();
+    }
 
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            CardListAPI api = new CardListAPI();
+            ArrayList<Card> result = api.getCards();
+
+            Log.d("DEBUG", result.toString());
+            return null;
+        }
     }
 }
