@@ -76,14 +76,23 @@ public class MainActivityFragment extends Fragment {
         task.execute();
     }
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Card>> {
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected ArrayList<Card> doInBackground(Void... voids) {
             CardListAPI api = new CardListAPI();
             ArrayList<Card> result = api.getCards();
 
             Log.d("DEBUG", result.toString());
-            return null;
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Card> cards) {
+            adapter.clear();
+            for (Card card : cards) {
+                adapter.add(card.getName());
+
+            }
         }
     }
 }
