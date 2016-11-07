@@ -13,9 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivityFragment extends Fragment {
 
@@ -90,6 +94,13 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... voids) {
             CardListAPI api = new CardListAPI();
             ArrayList<Card> result = api.getCards();
+
+            Gson JSON = new GsonBuilder()
+                    .disableHtmlEscaping()
+                    .setPrettyPrinting()
+                    .create();
+
+            Log.d(TAG, JSON.toJson(result));
 
             //Log.d("DEBUG", result.toString());
             return result;
