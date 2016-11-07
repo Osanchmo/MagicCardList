@@ -91,7 +91,7 @@ public class MainActivityFragment extends Fragment {
             CardListAPI api = new CardListAPI();
             ArrayList<Card> result = api.getCards();
 
-            Log.d("DEBUG", result.toString());
+            //Log.d("DEBUG", result.toString());
             return result;
         }
 
@@ -100,7 +100,6 @@ public class MainActivityFragment extends Fragment {
             adapter.clear();
             for (Card card : cards) {
                 adapter.add(card.getName());
-
             }
         }
     }

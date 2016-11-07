@@ -34,21 +34,36 @@ public class CardListAPI {
         }
         return null;
     }
-    
 
+    /**
+     * Recoge las cartas de una API y almacena datos en un array de objetos carta
+     * con los datos que queremos guardar
+     * @param jsonResponse
+     * @return
+     */
     private ArrayList<Card> processJson(String jsonResponse) {
         ArrayList<Card> cartas = new ArrayList<>();
 
         try {
             JSONObject data = new JSONObject(jsonResponse);
             JSONArray jsonCards = data.getJSONArray("cards");
+
             for (int i = 0; i < jsonCards.length(); i++) {
+
                 JSONObject jsonCard = jsonCards.getJSONObject(i);
 
                 Card carta = new Card();
+
                 carta.setName(jsonCard.getString("name"));
                 carta.setRarity(jsonCard.getString("rarity"));
-                carta.setType(jsonCard.getString("type"));
+                carta.setRarity(jsonCard.getString("type"));
+                carta.setRarity(jsonCard.getString("imageUrl"));
+                carta.setId(jsonCard.getString("id"));
+
+                if(jsonCard.has("text")) carta.setTexto(jsonCard.getString("text"));
+                if(jsonCard.has("toughness")) carta.setFuerza(jsonCard.getString("toughness"));
+                if(jsonCard.has("power")) carta.setTexto(jsonCard.getString("power"));
+                if(jsonCard.has("colors")) carta.setTexto(jsonCard.getJSONArray("colors").get(0).toString());
 
                 cartas.add(carta);
             }
