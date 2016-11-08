@@ -24,6 +24,38 @@ public class CardListAPI {
         return doCall(url);
     }
 
+    ArrayList<Card> filterCards(String filtro1, String filtro2) {
+        Uri uri = null;
+
+        if(!filtro1.equalsIgnoreCase("None") && (!filtro2.equalsIgnoreCase("None"))){
+            uri = uri.parse(BASE_URL);
+            uri.buildUpon()
+                .appendQueryParameter("colors",filtro1)
+                .appendQueryParameter("rarity",filtro2)
+            .build();
+
+        }
+        else {
+
+        if(!filtro1.equalsIgnoreCase("None")){
+            uri = Uri.parse(BASE_URL)
+                    .buildUpon()
+                    .appendQueryParameter("colors",filtro1)
+                    .build();
+
+        }
+
+        if(!filtro2.equalsIgnoreCase("None")){
+            uri = Uri.parse(BASE_URL)
+                    .buildUpon()
+                    .appendQueryParameter("colors",filtro2)
+                    .build();
+
+        }
+    }
+        return doCall(uri.toString());
+    }
+
     @Nullable
     private ArrayList<Card> doCall(String url) {
         try {

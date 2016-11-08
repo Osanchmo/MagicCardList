@@ -1,6 +1,8 @@
 package com.example.a21753725a.magiccardlist;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -90,17 +92,37 @@ public class MainActivityFragment extends Fragment {
     }
 
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Card>> {
+
         @Override
         protected ArrayList<Card> doInBackground(Void... voids) {
+
             CardListAPI api = new CardListAPI();
-            ArrayList<Card> result = api.getCards();
+            ArrayList<Card> result;
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String color = preferences.getString("color","None");
+            String rarity = preferences.getString("rarity","None");
+
+            if (color.equalsIgnoreCase("None") && rarity.equalsIgnoreCase("None"))
+            {
+                result = api.getCards();
+            }
+            else if (!color.equalsIgnoreCase("None") && !color.equalsIgnoreCase("None"))
+            {
+                result = api.filterCards(color,rarity);
+            }
+            else if (!color.equalsIgnoreCase("")){
+                result = api.filterCards(color,"");
+            }
+            else
+            {
+                result = api.filterCards("",rarity);
+            }
 
             Gson JSON = new GsonBuilder()
                     .disableHtmlEscaping()
                     .setPrettyPrinting()
                     .create();
-
-            Log.d(TAG, JSON.toJson(result));
 
             //Log.d("DEBUG", result.toString());
             return result;
