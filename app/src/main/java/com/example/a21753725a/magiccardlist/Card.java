@@ -8,7 +8,7 @@ public class Card {
     private String name;
     private String type;
     private String rarity;
-    private String [] colores;
+    private String colores;
     private String Fuerza;
     private String texto;
     private String Resistencia;
@@ -31,11 +31,11 @@ public class Card {
         this.texto = texto;
     }
 
-    public String [] getColores() {
+    public String getColores() {
         return colores;
     }
 
-    public void setColores(String [] colores) {
+    public void setColores(String colores) {
         this.colores = colores;
     }
 

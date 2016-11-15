@@ -37,23 +37,13 @@ public class MainActivityFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         ListView cardList = (ListView) view.findViewById(R.id.listViewCards);
 
-        String[] data = {
-                "Los 400 golpes",
-                "El odio",
-                "El padrino",
-                "El padrino. Parte II",
-                "Ocurrió cerca de su casa",
-                "Infiltrados",
-                "Umberto D."
-        };
-
-        items = new ArrayList<>(Arrays.asList(data));
+        items = new ArrayList<>();
         adapter = new ArrayAdapter<>(
                 getContext(),
                 R.layout.lista_cartas,
@@ -73,24 +63,24 @@ public class MainActivityFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
             refresh();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }
+
     private void refresh() {
         RefreshDataTask task = new RefreshDataTask();
         task.execute();
     }
-
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Card>> {
 
         @Override
@@ -98,33 +88,14 @@ public class MainActivityFragment extends Fragment {
 
             CardListAPI api = new CardListAPI();
             ArrayList<Card> result;
-
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String color = preferences.getString("color","None");
-            String rarity = preferences.getString("rarity","None");
+            String color = preferences.getString("color","");
+            String rarity = preferences.getString("rarity","");
 
-            if (color.equalsIgnoreCase("None") && rarity.equalsIgnoreCase("None"))
-            {
-                result = api.getCards();
-            }
-            else if (!color.equalsIgnoreCase("None") && !color.equalsIgnoreCase("None"))
-            {
-                result = api.filterCards(color,rarity);
-            }
-            else if (!color.equalsIgnoreCase("")){
-                result = api.filterCards(color,"");
-            }
-            else
-            {
-                result = api.filterCards("",rarity);
-            }
+            result = api.getCards(rarity,color);
 
-            Gson JSON = new GsonBuilder()
-                    .disableHtmlEscaping()
-                    .setPrettyPrinting()
-                    .create();
 
-            //Log.d("DEBUG", result.toString());
+            Log.d("DEBUG", result.toString());
             return result;
         }
 
