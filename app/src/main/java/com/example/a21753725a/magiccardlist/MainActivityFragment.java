@@ -94,7 +94,7 @@ public class MainActivityFragment extends Fragment {
             result = api.getCards(rarity,color);
 
 
-            Log.d("DEBUG", result.toString());
+            //Log.d("DEBUG", result.toString());
             return result;
         }
 
