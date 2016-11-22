@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class CardAdapter extends ArrayAdapter<Card>{
@@ -20,7 +23,6 @@ public class CardAdapter extends ArrayAdapter<Card>{
 
 
         Card card = getItem(pos);
-        Log.w("XXXX", card.toString());
 
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -29,11 +31,14 @@ public class CardAdapter extends ArrayAdapter<Card>{
 
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvType = (TextView) convertView.findViewById(R.id.tvType);
+        TextView tvRarity = (TextView) convertView.findViewById(R.id.tvRarity);
         ImageView imCard = (ImageView) convertView.findViewById(R.id.imCard);
 
         tvName.setText(card.getName());
-        tvType.setText(card.getType() + " - " + card.getRarity());
-
+        tvType.setText(card.getType());
+        tvRarity.setText(card.getRarity());
+        Glide.with(getContext()).load(card.getImagen()).into(imCard);
+        //Picasso.with(getContext()).load(card.getImagen()).into(imCard);
         return convertView;
     }
 }
