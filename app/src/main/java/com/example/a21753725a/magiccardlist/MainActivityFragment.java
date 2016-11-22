@@ -30,6 +30,7 @@ public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
     }
+    
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +59,6 @@ public class MainActivityFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
                 inflater.inflate(R.menu.refresh_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_refresh) {
-            refresh();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package com.example.a21753725a.magiccardlist;
 
-/**
- * Created by 21753725a on 24/10/16.
- */
+import java.io.Serializable;
 
-public class Card {
+public class Card implements Serializable {
     private String name;
     private String type;
     private String rarity;

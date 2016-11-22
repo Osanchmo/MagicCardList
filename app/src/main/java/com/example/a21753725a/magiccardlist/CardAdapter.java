@@ -38,7 +38,6 @@ public class CardAdapter extends ArrayAdapter<Card>{
         tvType.setText(card.getType());
         tvRarity.setText(card.getRarity());
         Glide.with(getContext()).load(card.getImagen()).into(imCard);
-        //Picasso.with(getContext()).load(card.getImagen()).into(imCard);
         return convertView;
     }
 }
