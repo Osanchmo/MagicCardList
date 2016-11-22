@@ -7,23 +7,15 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import static android.content.ContentValues.TAG;
 
 public class MainActivityFragment extends Fragment {
 
@@ -59,7 +51,7 @@ public class MainActivityFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Card card = (Card) adapterView.getItemAtPosition(i);
 
-                Intent intent = new Intent(getContext(), card_detail.class);
+                Intent intent = new Intent(getContext(), CardDetail.class);
                 intent.putExtra("card",card);
                 startActivity(intent);
 

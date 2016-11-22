@@ -62,8 +62,8 @@ public class CardListAPI {
                 carta.setImagen(jsonCard.getString("imageUrl"));
 
                 if(jsonCard.has("text")) carta.setTexto(jsonCard.getString("text"));
-                if(jsonCard.has("toughness")) carta.setFuerza(jsonCard.getString("toughness"));
-                if(jsonCard.has("power")) carta.setTexto(jsonCard.getString("power"));
+                if(jsonCard.has("toughness")) carta.setResistencia(jsonCard.getString("toughness"));
+                if(jsonCard.has("power")) carta.setFuerza(jsonCard.getString("power"));
                 if(jsonCard.has("colors")) carta.setColores(jsonCard.getString("colors"));
 
                 cartas.add(carta);

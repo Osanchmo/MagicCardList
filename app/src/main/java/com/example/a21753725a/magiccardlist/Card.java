@@ -3,6 +3,7 @@ package com.example.a21753725a.magiccardlist;
 import java.io.Serializable;
 
 public class Card implements Serializable {
+
     private String name;
     private String type;
     private String rarity;

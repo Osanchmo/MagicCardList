@@ -1,7 +1,6 @@
 package com.example.a21753725a.magiccardlist;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class CardAdapter extends ArrayAdapter<Card>{
             convertView = inflater.inflate(R.layout.card_info, parent, false);
         }
 
-        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
+        TextView tvName = (TextView) convertView.findViewById(R.id.frName);
         TextView tvType = (TextView) convertView.findViewById(R.id.tvType);
         TextView tvRarity = (TextView) convertView.findViewById(R.id.tvRarity);
         ImageView imCard = (ImageView) convertView.findViewById(R.id.imCard);
