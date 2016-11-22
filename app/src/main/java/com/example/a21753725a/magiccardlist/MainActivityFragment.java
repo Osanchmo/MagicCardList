@@ -25,8 +25,8 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivityFragment extends Fragment {
 
-    private ArrayList<String> items;
-    private ArrayAdapter<String> adapter;
+    private ArrayList<Card> items;
+    private CardAdapter adapter;
 
     public MainActivityFragment() {
     }
@@ -44,10 +44,9 @@ public class MainActivityFragment extends Fragment {
         ListView cardList = (ListView) view.findViewById(R.id.listViewCards);
 
         items = new ArrayList<>();
-        adapter = new ArrayAdapter<>(
+        adapter = new CardAdapter(
                 getContext(),
                 R.layout.lista_cartas,
-                R.id.titolCards,
                 items
         );
         cardList.setAdapter(adapter);
@@ -103,7 +102,7 @@ public class MainActivityFragment extends Fragment {
         protected void onPostExecute(ArrayList<Card> cards) {
             adapter.clear();
             for (Card card : cards) {
-                adapter.add(card.getName());
+                adapter.add(card);
             }
         }
     }
