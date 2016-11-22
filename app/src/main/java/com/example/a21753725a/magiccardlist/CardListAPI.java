@@ -57,7 +57,6 @@ public class CardListAPI {
                 Card carta = new Card();
 
                 carta.setName(jsonCard.getString("name"));
-                System.out.println(jsonCard.get("name"));
                 carta.setRarity(jsonCard.getString("rarity"));
                 carta.setType(jsonCard.getString("type"));
                 carta.setImagen(jsonCard.getString("imageUrl"));

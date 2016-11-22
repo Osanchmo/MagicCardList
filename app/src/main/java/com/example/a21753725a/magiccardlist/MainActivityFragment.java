@@ -1,5 +1,6 @@
 package com.example.a21753725a.magiccardlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.google.gson.Gson;
@@ -30,7 +32,7 @@ public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
     }
-    
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,17 @@ public class MainActivityFragment extends Fragment {
         );
         cardList.setAdapter(adapter);
 
+        cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Card card = (Card) adapterView.getItemAtPosition(i);
+
+                Intent intent = new Intent(getContext(), card_detail.class);
+                intent.putExtra("card",card);
+                startActivity(intent);
+
+            }
+        });
         return view;
     }
 
