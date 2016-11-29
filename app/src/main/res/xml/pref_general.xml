@@ -2,13 +2,13 @@
 
     <!--Filtro de colores-->
     <ListPreference
-        android:defaultValue="None"
+        android:defaultValue=""
         android:entries="@array/pref_color_list_titles"
         android:entryValues="@array/pref_color_list_values"
         android:key="color"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:title="Selecciona color de la carta" />
+        android:title="@string/pref_title_display_color"/>
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
@@ -17,7 +17,7 @@
         android:defaultValue=""
         android:entries="@array/pref_rareza_list_titles"
         android:entryValues="@array/pref_rereza_list_values"
-        android:key="rareza"
+        android:key="rarity"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/pref_title_rareza" />

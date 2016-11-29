@@ -174,7 +174,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             setHasOptionsMenu(true);
 
             bindPreferenceSummaryToValue(findPreference("color"));
-            bindPreferenceSummaryToValue(findPreference("rareza"));
+            bindPreferenceSummaryToValue(findPreference("rarity"));
         }
 
         @Override

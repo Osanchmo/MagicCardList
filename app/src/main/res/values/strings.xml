@@ -15,7 +15,7 @@
 
     <!--<string name="pref_title_display_color">Escribe un color</string>
     <string name="pref_default_display_color"></string>-->
-    <string name="pref_title_display_color">Selecciona el color de la carta</string>
+    <string name="pref_title_display_color">Color</string>
     <string-array name="pref_color_list_titles">
         <item>Rojo</item>
         <item>Azul</item>
@@ -33,9 +33,9 @@
         <item></item>
     </string-array>
 
-    <string name="pref_title_rareza">Selecciona la rareza de la carta</string>
+    <string name="pref_title_rareza">Rareza</string>
     <string-array name="pref_rareza_list_titles">
-        <item>Common</item>
+        <item>Común</item>
         <item>Poco Común</item>
         <item>Rara</item>
         <item>Mítica</item>
@@ -47,9 +47,9 @@
         <item>Common</item>
         <item>Uncommon</item>
         <item>Rare</item>
-        <item>MythicRare</item>
+        <item>Mythic Rare</item>
         <item>Special</item>
-        <item>BasicLand</item>
+        <item>Basic Land</item>
         <item></item>
     </string-array>
 
@@ -99,5 +99,5 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_card_detail">card_detail</string>
+    <string name="title_activity_card_detail">Detalles</string>
 </resources>
